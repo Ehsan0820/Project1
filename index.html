@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello, World!</title>
+<style>
+  :root {
+    --bg-1: #0f0c29;
+    --bg-2: #302b63;
+    --bg-3: #24243e;
+    --accent-1: #ff6ec4;
+    --accent-2: #7873f5;
+    --accent-3: #4adede;
+    --text: #f5f5ff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-2));
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    color: var(--text);
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating particles */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    bottom: -10%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0.6;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    90% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-110vh) translateX(var(--drift, 40px)) scale(0.4);
+      opacity: 0;
+    }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 4rem 5rem;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      inset 0 0 40px rgba(255, 255, 255, 0.03);
+    animation: cardEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes cardEntrance {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 6s linear infinite;
+    text-shadow: 0 0 60px rgba(120, 115, 245, 0.35);
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 300% center;
+    }
+  }
+
+  .wave {
+    display: inline-block;
+    animation: wave 2.4s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+  }
+
+  p.subtitle {
+    margin-top: 1.2rem;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    color: rgba(245, 245, 255, 0.75);
+    letter-spacing: 0.02em;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.55rem 1.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 245, 255, 0.9);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    cursor: default;
+  }
+
+  .badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(120, 115, 245, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  footer {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(245, 245, 255, 0.4);
+    z-index: 2;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      padding: 3rem 1.8rem;
+      margin: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <main class="card">
+    <h1><span class="wave">👋</span> Hello, World!</h1>
+    <p class="subtitle">Welcome to Project1 &mdash; your first page is up and running.</p>
+    <span class="badge">Built with HTML &amp; CSS</span>
+  </main>
+
+  <footer>Crafted with care &middot; <span id="year"></span></footer>
+
+  <script>
+    // Generate floating particles
+    const container = document.getElementById('particles');
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 8 + 4;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+      p.style.animationDuration = (Math.random() * 12 + 10) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      container.appendChild(p);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
