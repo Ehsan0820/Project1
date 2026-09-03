@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &middot; Project1</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <main class="card">
+    <h1>Get in Touch</h1>
+    <p class="subtitle">Have a question or just want to say hello?</p>
+
+    <form class="form-grid" action="mailto:hello@example.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+
+    <p class="form-note">This form opens your email client &mdash; no server, no tracking, just a plain message.</p>
+
+    <div class="contact-links">
+      <a href="mailto:hello@example.com">✉️ hello@example.com</a>
+      <a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">💼 LinkedIn</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">Crafted with care &middot; <span id="year"></span></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
